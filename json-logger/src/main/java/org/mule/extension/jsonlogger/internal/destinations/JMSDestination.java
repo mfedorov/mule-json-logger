@@ -1,6 +1,12 @@
 package org.mule.extension.jsonlogger.internal.destinations;
 
-import org.mule.extension.jsonlogger.api.pojos.Priority;
+import static org.mule.runtime.api.metadata.DataType.JSON_STRING;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.inject.Inject;
+
 import org.mule.extensions.jms.api.message.JmsMessageBuilder;
 import org.mule.extensions.jms.api.message.JmsxProperties;
 import org.mule.runtime.api.metadata.TypedValue;
@@ -15,14 +21,6 @@ import org.mule.runtime.extension.api.client.ExtensionsClient;
 import org.mule.runtime.extension.api.client.OperationParameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-import static org.mule.runtime.api.metadata.DataType.JSON_STRING;
 
 public class JMSDestination implements Destination {
 

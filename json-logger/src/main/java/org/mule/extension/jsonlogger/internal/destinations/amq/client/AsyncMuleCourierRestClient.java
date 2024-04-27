@@ -5,11 +5,12 @@
  */
 package org.mule.extension.jsonlogger.internal.destinations.amq.client;
 
-import com.mulesoft.mq.restclient.impl.OAuthCredentials;
-import com.mulesoft.mq.restclient.internal.Request;
-import com.mulesoft.mq.restclient.internal.RequestBuilder;
-import com.mulesoft.mq.restclient.internal.Response;
-import com.mulesoft.mq.restclient.internal.client.AbstractCourierRestClient;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.commons.io.IOUtils;
 import org.mule.runtime.api.scheduler.Scheduler;
 import org.mule.runtime.api.util.MultiMap;
@@ -23,13 +24,14 @@ import org.mule.runtime.http.api.domain.message.request.HttpRequestBuilder;
 import org.mule.runtime.http.api.domain.message.response.HttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import rx.Observable;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
+import com.mulesoft.mq.restclient.client.Request;
+import com.mulesoft.mq.restclient.client.RequestBuilder;
+import com.mulesoft.mq.restclient.client.Response;
+import com.mulesoft.mq.restclient.client.mq.AbstractCourierRestClient;
+import com.mulesoft.mq.restclient.client.mq.domain.OAuthCredentials;
+
+import rx.Observable;
 
 public class AsyncMuleCourierRestClient extends AbstractCourierRestClient {
 
